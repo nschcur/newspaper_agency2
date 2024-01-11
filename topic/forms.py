@@ -108,3 +108,4 @@ class NewspaperSearchForm(forms.Form):
         label="",
         widget=forms.TextInput(attrs={"placeholder": "Search by title", })
     )
+
