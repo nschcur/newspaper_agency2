@@ -1,0 +1,22 @@
+{% extends "layouts/base.html" %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+  <h1>Login</h1>
+
+  {% if form.errors %}
+  <p style="color: red">Invalid credential</p>
+
+  {% endif %}
+
+  <form action="{% url 'login' %}" method="post">
+    {% csrf_token %}
+    {{ form|crispy}}
+
+
+    <br>
+    <input class="btn btn-primary btn-lg" type="submit" value="Login">
+    <input type="hidden" name="next" value="{{ next }}">
+
+  </form>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Topic detail page {% endblock %}
+
+
+{% block content %}
+  {% include 'includes/navigation.html' %}
+    <br><br><br><br>
+<div class="container">
+  <br><br>
+  <div class="card card-body blur shadow-blur mx-3 mx-lg-4 mt-n1"  >
+    <section class="my-4 py-4" >
+
+          <a style="float:right"  href="{% url 'newspaper_agency:topic-list' %}" class="btn btn-primary link-to-page">
+      back to topics list
+    </a>
+        <h2>
+
+    Topic: {{ topic.name }}
+  </h2>
+
+ <br>
+      {% if topic.subjects %}
+    <table class="table">
+      <tr>
+        <th><h4>title</h4></th>
+        <th><h4>publisher</h4></th>
+        <th><h4>publihed date</h4></th>
+
+      </tr>
+    {% for news in topic.subjects.all|slice:"10" %}
+      <tr>
+
+        <td><a href="{% url 'newspaper_agency:newspaper-detail' pk=news.id %}">{{ news.title }}</a></td>
+        <td>{{ news.publishers }}</td>
+         <td>{{ news.published_date }}</td>
+      </tr>
+
+    {% endfor %}
+
+
+    </table>
+    {% else %}
+      <p>There are no news in this topic.</p>
+    {% endif %}
+
+    </section>
+
+  </div>
+
+ {% endblock %}

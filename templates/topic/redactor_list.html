@@ -1,0 +1,60 @@
+{% extends 'layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Redactors list {% endblock %}
+
+{% block content %}
+
+    <br><br><br><br>
+<div class="container">
+   <br><br>
+  <div class="card card-body blur shadow-blur mx-3 mx-lg-4 mt-n1"  >
+<section class="my-4 py-4" >
+            <a style="float:right" href="{% url 'newspaper_agency:index' %}" class="btn btn-secondary link-to-page">
+      back to home page
+    </a>
+   <h1>
+      Redactor List
+      <a href="{% url 'newspaper_agency:redactor-create' %}" class="btn btn-primary link-to-page">
+        Add redactor
+      </a>
+    </h1>
+
+<br>
+
+<br>
+    {% if redactor_list %}
+    <table class="table">
+      <tr>
+        <th>ID</th>
+        <th>Username</th>
+        <th>First name</th>
+        <th>Last name</th>
+        <th>Years of experience</th>
+      </tr>
+    {% for redactor in redactor_list %}
+      <tr>
+        <td>{{ redactor.id }}</td>
+        <td><a href="{% url 'newspaper_agency:redactor-detail' pk=redactor.id %} ">{{ redactor.username }} </a></td>
+        <td>{{ redactor.first_name }}</td>
+        <td>{{ redactor.last_name }}</td>
+        <td>{{ redactor.years_of_experience }}</td>
+      </tr>
+    {% endfor %}
+
+
+    </table>
+    {% else %}
+      <p>There are no redactors in the service.</p>
+    {% endif %}
+
+            {% block pagination %}
+                {% include "includes/pagination.html" %}
+            {% endblock %}
+  </div>
+
+</div>
+
+
+
+ {% endblock %}

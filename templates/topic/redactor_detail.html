@@ -1,0 +1,62 @@
+{% extends 'layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Redactor detail page {% endblock %}
+
+
+{% block content %}
+  {% include 'includes/navigation.html' %}
+    <br><br><br><br><br><br>
+<div class="container">
+  <br><br>
+  <div class="card card-body blur shadow-blur mx-3 mx-lg-4 mt-n1"  >
+    <section class="my-4 py-4" >
+          <a style="float:right" href="{% url 'newspaper:redactor-list' %}" class="btn btn-primary link-to-page">
+      back to redactors list
+    </a>
+        <h2>
+
+    Username: {{ redactor.username }}
+  </h2>
+    <a href="{% url 'newspaper:redactor-delete' pk=redactor.id %}" class="btn btn-danger link-to-page">
+      Delete redactor
+    </a>
+
+    <a href="{% url 'newspaper:redactor-update' pk=redactor.id %}" class="btn btn-secondary link-to-page">
+      Update redactor info
+    </a>
+ <br>
+      <br>
+            <div class="row justify-content-start">
+              <div class="col-md-10">
+                <p><b>username:</b> {{ redactor.username }} </p>
+                <p<b>years of experience:</b> {{ redactor.years_of_experience }}</p>
+                <p><b>first name:</b> {{ redactor.first_name }}</p>
+                <p><b>last name: </b>{{ redactor.last_name }}</p>
+
+                <div class="info">
+                        <div class="ml-3">
+                          <br>
+    <h4>Newspapers:</h4>
+
+    {% for newspaper in redactor.newspaper_redactors.all %}
+        <hr>
+        <p><a href="{% url 'newspaper_agency:newspaper-detail' pk=newspaper.id %} "><strong> {{ newspaper.title }}</strong></a>
+
+          <a href="{% url 'newspaper_agency:topic-detail' pk=newspaper.topic.id %} "><strong>( {{ newspaper.topic }})</strong></a>
+        </p>
+
+    {% empty %}
+      <p>No newspaper</p>
+    {% endfor %}
+  </div>
+
+                </div>
+              </div>
+
+            </div>
+
+    </section>
+  </div>
+</div>
+ {% endblock %}

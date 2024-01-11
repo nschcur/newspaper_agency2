@@ -1,0 +1,77 @@
+{% extends 'layouts/base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Topic list {% endblock %}
+
+{% block content %}
+
+    <br><br><br><br>
+<div class="container">
+<br><br>
+  <div class="card card-body blur shadow-blur mx-3 mx-lg-4 mt-n1"  >
+        <section class="my-4 py-4" >
+          <a style="float:right" href="{% url 'newspaper_agency:index' %}" class="btn btn-secondary link-to-page">
+      back to home page
+    </a>
+   <h1>
+      Topic List
+      <a href="{% url 'newspaper_agency:topic-create' %}" class="btn btn-primary link-to-page">
+        Add new topic
+      </a>
+    </h1>
+
+<br>
+
+<br>
+ <br>
+  {% if topic_list %}
+    <table class="table">
+
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Update</th>
+        <th>Delete</th>
+      </tr>
+
+
+      {% for topic in topic_list %}
+        <tr>
+          <td>
+              {{ topic.id }}
+          </td>
+          <td>
+            <a href="{% url 'newspaper_agency:topic-detail' pk=topic.id %} "><strong>{{ topic.name }}</strong></a>
+
+
+          </td>
+          <td>
+              <a href="{% url 'newspaper_agency:topic-update' pk=topic.id %}">
+                Update
+              </a>
+            </td>
+            <td>
+              <a style="color: red"
+                href="{% url 'newspaper_agency:topic-delete' pk=topic.id %}">
+                Delete
+              </a>
+            </td>
+        </tr>
+      {% endfor %}
+    </table>
+
+  {% else %}
+      <p>There are no topics in the service.</p>
+  {% endif %}
+
+            {% block pagination %}
+                {% include "includes/pagination.html" %}
+            {% endblock %}
+  </div>
+
+</div>
+</div>
+
+
+
+ {% endblock %}
