@@ -1,35 +1,41 @@
-# Newspaper Agency
+# Newspaper agency (NA) project
 
+Django project for managing newspapers and authors in Agency
 
+## Check it out!
 
-## Description of the project
+[Newspaper agency project deployed to render]() 
 
-Newspaper Agency is a web application for managing a newspaper and magazine distribution agency. The application allows you to maintain a customer base, track the cost and volume of orders, as well as perform other functions to facilitate the work of the agency.
+# newspaper-agency2
 
-## Basic functions
+Python3 must be already installed
 
-Adding and editing editors and newspapers.
-
-
-## Installation and launch
-
-1. **Repository cloning:**
-   ```bash
-   git clone https://github.com/nschcur/newspaper-agency.git
-Installing dependencies:
-
-bash
-Copy code
-cd newspaper-agency
+```shell
+git clone https://github.com/nschcur/newspaper_agency2.git
+cd newspaper-agency2
+python3 -m venv venv
+source venv/bin/activate
 pip install -r requirements.txt
-Database settings:
+```
 
-bash
-Copy code
-python manage.py migrate
-Starting the server:
+```bash
+$ python manage.py makemigrations
+$ python manage.py migrate
+```
 
-bash
-Copy code
-python manage.py runserver
-The project will be available at http://127.0.0.1:8000/.
+
+
+```bash
+$ python manage.py runserver
+```
+
+At this point, the app runs at `http://127.0.0.1:8000/`.
+
+![](demo.png)
+
+
+
+- After loading data from fixture you can use following superuser (or create another one by yourself):
+  - Login: `admintest`
+  - Password: `qwerty12345`
+- 
