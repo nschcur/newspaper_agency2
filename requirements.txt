@@ -11,7 +11,7 @@ crispy-bootstrap5==2023.10
 cryptography==41.0.4
 distlib==0.3.7
 dj-database-url==2.1.0
-Django==3.2.10
+Django==4.2
 django-bootstrap4==23.4
 django-crispy-forms==2.1
 dulwich==0.21.6
