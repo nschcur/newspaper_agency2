@@ -12,7 +12,7 @@ charset-normalizer==3.3.0
 cleo==2.1.0
 click==8.1.7
 crashtest==0.4.1
-crispy-bootstrap4==2023.1
+crispy-bootstrap4==2022.1
 crispy-bootstrap5==0.4
 cryptography==41.0.4
 defusedxml==0.7.1
